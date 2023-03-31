@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+  
+}
+
+.divCards {
+  position: relative;
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  width: 100%;
+
+}
