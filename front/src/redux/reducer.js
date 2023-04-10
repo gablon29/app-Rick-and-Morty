@@ -2,12 +2,12 @@
  * importamos las action para trabajar con ellas generar un "switch" donde ellas seran los 
  * casos
  */
-import { ADD_CHARACTER, REMOVE_CHAR } from "./actions"
+import { ADD_CHARACTER, GET_FAVORITES, REMOVE_CHAR } from "./actions"
 /**
  * creamos el state inicial para trabajar con ello
  */
 const initialState = {
-    myFavorites: []
+    myFavorites: [] 
 }
 /** 
  * creamos el "reducer" que siempre lo tenemos como rootRender
@@ -24,12 +24,17 @@ const rootReducer = (state = initialState, actions) => {
                 ...state,
                 myFavorites: [...state.myFavorites, actions.payload]
             };
-        case REMOVE_CHAR: 
+        case REMOVE_CHAR:
             return {
                 ...state,
                 myFavorites: state.myFavorites.filter(
                     (char) => char.id !== actions.payload)
-            }
+            };
+        case GET_FAVORITES:
+            return {
+                ...state,
+                myFavorites: actions.payload
+            };
 
 
         default: return {...state}

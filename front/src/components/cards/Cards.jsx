@@ -1,7 +1,16 @@
 import  Card  from "../card/Card"
 import './Cards.css'
+import { useDispatch } from "react-redux"
+import { useEffect } from "react"
+import { getFavorites } from "../../redux/actions"
 
 export const Cards = ({ characters, onClose }) => {
+    
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getFavorites())
+    }, [])
+
     return (
         <div className="conteinerCard">
             {

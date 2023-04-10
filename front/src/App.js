@@ -15,7 +15,7 @@ function App() {
   const [access, setAccess] = useState(false);
 
   const username = 'gabriellondero@gmail.com'
-  const password = 'Gabriel29'
+  const password = 'Gl29'
 
   const login = (userData) => {
     if (userData.username === username && userData.password === password) {
@@ -27,6 +27,11 @@ function App() {
   const [characters, setCharacters] = useState([]);
   
   const onSearch = (character) => { 
+
+    if (characters.find((char) => char.id === Number(character))) {
+      return alert('Personaje repetido')
+    }
+
     fetch(`http://localhost:3001/rickandmorty/onsearch/${character}`)
     .then((response) => response.json())
     .then((data) => {

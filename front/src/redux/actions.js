@@ -1,7 +1,9 @@
 // Aqui creamos los actions que luego se tomara las reducer para saber lo que debe hacer
-
+import axios from "axios";
 export const ADD_CHARACTER = 'ADD_CHARACTER';
 export const REMOVE_CHAR = 'REMOVE_CHAR';
+export const GET_FAVORITES = 'GET_FAVORITES';
+export const REMOVE_FAVORITES = 'REMOVE_FAVORITES';
 
 /**
  * generamos el valor de las variantes que devolveran un obj
@@ -16,3 +18,14 @@ export const addCharacter = (character) => {
 export const removeChar = (id) => {
     return {type: REMOVE_CHAR, payload: id}
 }
+
+export const getFavorites = () => {
+  return async function(dispatch) {
+        const URL = "http://localhost:3001/rickandmorty";
+        const response = await axios.get(`${URL}/fav`);
+        dispatch({ type: GET_FAVORITES, payload: response.data })
+    }
+}
+    export const removeFavorites = (id) => {
+        return { type: REMOVE_FAVORITES, payload: id };
+    }

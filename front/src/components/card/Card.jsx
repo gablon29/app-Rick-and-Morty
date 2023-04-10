@@ -1,14 +1,27 @@
 
 import { NavLink } from 'react-router-dom';
 import './Card.css';
-import { connect } from 'react-redux';
-import { addCharacter, removeChar } from '../../redux/actions';
+import { connect, useDispatch } from 'react-redux';
+import {  getFavorites, removeChar } from '../../redux/actions';
 import { useState, useEffect } from 'react';
+import axios from "axios";
 
 
-const Card = ({ id, name, species, gender, image, onClose, addCharacter, removeChar, myFavorites}) => {
+const Card = ({ id, name, species, gender, image, onClose, myFavorites }) => {
     
     const [isFav, setIsFav] = useState(false);
+    const dispatch = useDispatch()
+
+    const addFavorite = (character) => {
+        axios.post("http://localhost:3001/rickandmorty/fav", character)
+            .then(response => console.log("ok"));
+    };
+
+    const removeChar = async (id) => {
+        await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`);
+        dispatch(getFavorites())
+        alert('Eliminado')
+    };
 
     const handleFavorite = () => {
         if (isFav) {
@@ -16,7 +29,7 @@ const Card = ({ id, name, species, gender, image, onClose, addCharacter, removeC
             removeChar(id)
         } else {
             setIsFav(true)
-            addCharacter({ id, name, species, gender, image })
+            addFavorite({ id, name, species, gender, image})
         }
     }
     useEffect(() => {
@@ -56,7 +69,6 @@ const Card = ({ id, name, species, gender, image, onClose, addCharacter, removeC
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        addCharacter: (character) => dispatch(addCharacter(character)),
         removeChar: (id) => dispatch(removeChar(id))
     }
 }
