@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Route, Routes, useLocation } from 'react-router-dom';
 import About from './components/about/About';
 import Detail from './components/detail/Detail';
-import Form from './components/form/Form';
+import Form_login from './components/form/Form';
 import Favorites from './components/favorites/Favorites';
 
 
@@ -54,10 +54,10 @@ function App() {
   }, [access])
   
   return (
-    <div className="App">
+    <div className='divApp'>
       { pathname !== '/' && <Nav onSearch= {onSearch}/>}
       <Routes>
-        <Route path='/' element={<Form login={login} />}/>
+        <Route path='/' element={<Form_login login={login} />}/>
         <Route path='/about' element={<About />} />
         <Route path='/home' element={<Cards characters={characters} onClose={onClose} />}/>
         <Route path='/detail/:detailId' element={<Detail />} />

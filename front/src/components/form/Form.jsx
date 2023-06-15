@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
 import { validation } from './validation';
+import './Form.css'
 
-const Form = ({login}) => {
+const Form_login = ({login}) => {
     
     const [userData, setUserData] = React.useState({ username: '', password: '' });
 
@@ -28,16 +31,24 @@ const Form = ({login}) => {
     }
 
   return (
-      <div>
+      <div className='divForm' >
+        <div className='div-conteiner'>
           <form onSubmit={handleSubmit}>
-              <label htmlFor='username'>Username</label>
-              <input type='text' name='username' value={userData.username} onChange={handleInputChange} />
+          <FloatingLabel
+        controlId="floatingInput"
+        className="mb-3"
+        
+      >Username 
+        <Form.Control className='form_control' type="text"             
+          placeholder="username" name='username'
+            value={userData.username} onChange={handleInputChange}/>
+        </FloatingLabel>
               <span>
-                  
                   {
                   errors.username && <h3>{ errors.username }</h3>
                 }
               </span>
+                  
               
               <label htmlFor='password'>Password</label>
               <input type='password' name='password' value={userData.password} onChange={handleInputChange} />
@@ -46,12 +57,21 @@ const Form = ({login}) => {
                   errors.username && <h3>{ errors.password }</h3>
                 }
               </span>
-                  
-
+              <br/>
               <button>Login</button>
           </form>
+          </div>
     </div>
   )
 }
 
-export default Form
+export default Form_login
+
+    // <FloatingLabel
+    //     controlId="floatingInput"
+    //     label="Email address"
+    //     className="mb-3"
+    //   >
+    //     <Form.Control type="text" placeholder="username" name='username'
+    //     value={userDate.username} onChange={handleInputChange}/>
+    //   </FloatingLabel>

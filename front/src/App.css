@@ -1,13 +1,5 @@
-.App {
-  text-align: center;
-  
-}
-
-.divCards {
-  position: relative;
-  display: flex;
-  flex-direction:row;
-  justify-content: center;
-  width: 100%;
-
+.divApp {
+  width: 100%vw;
+  height: 100vh;
+  border: 5px solid red
 }
