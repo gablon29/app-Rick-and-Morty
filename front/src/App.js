@@ -15,7 +15,7 @@ function App() {
   const [access, setAccess] = useState(false);
 
   const username = 'gabriellondero@gmail.com'
-  const password = 'Gl29'
+  const password = 'G'
 
   const login = (userData) => {
     if (userData.username === username && userData.password === password) {

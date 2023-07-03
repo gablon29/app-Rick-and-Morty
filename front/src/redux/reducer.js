@@ -1,28 +1,16 @@
-/**
- * importamos las action para trabajar con ellas generar un "switch" donde ellas seran los 
- * casos
- */
-import { ADD_CHARACTER, GET_FAVORITES, REMOVE_CHAR } from "./actions"
-/**
- * creamos el state inicial para trabajar con ello
- */
+import { ADD_CHARACTER, FILTER, GET_FAVORITES, ORDER, REMOVE_CHAR } from "./actions"
+
 const initialState = {
-    myFavorites: [] 
+    myFavorites: [],
+    // allCharacter: []
 }
-/** 
- * creamos el "reducer" que siempre lo tenemos como rootRender
- * es la unica funcion que puede modificar mi estado por que es la unica 
- * que esta suscripta
- * Tambien generamos el switch para que tomando las variables que vienen de la importacion
- * del action retorne el estado modificado
- * 
- */
+
 const rootReducer = (state = initialState, actions) => { 
     switch (actions.type) {
-        case ADD_CHARACTER:
+        case GET_FAVORITES:
             return {
                 ...state,
-                myFavorites: [...state.myFavorites, actions.payload]
+                myFavorites: actions.payload,
             };
         case REMOVE_CHAR:
             return {
@@ -30,11 +18,24 @@ const rootReducer = (state = initialState, actions) => {
                 myFavorites: state.myFavorites.filter(
                     (char) => char.id !== actions.payload)
             };
-        case GET_FAVORITES:
-            return {
-                ...state,
-                myFavorites: actions.payload
-            };
+        // case FILTER:
+        //     const { myFavorites } = state.myFavorites;
+        //     return {
+        //         ...state,
+        //         myFavorites: myFavorites.filter(char => char.gender === actions.payload)
+        //     };
+        // case ORDER:
+        //     const { id } = state.allCharacter;
+        //     let result = [];
+        //     if ("Ascendente") {
+        //         result = state.allCharacter.sort((a, b) => a - b)
+        //     } else {
+        //         result = state.allCharacter.sort((a, b) => b - a)
+        //     }
+        //     return {
+        //         ...state,
+        //         myFavorites: result
+        //     }
 
 
         default: return {...state}

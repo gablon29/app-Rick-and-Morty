@@ -6,11 +6,10 @@ import { getFavorites } from "../../redux/actions"
 
 export const Cards = ({ characters, onClose }) => {
     
-    const dispatch = useDispatch();
+  const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getFavorites())
     }, [])
-
     return (
         <div className="conteinerCard">
             {

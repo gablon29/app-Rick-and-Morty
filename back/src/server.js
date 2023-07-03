@@ -1,22 +1,19 @@
-const http = require("http");
-const getCharById = require('./controllers/getCharById')
-const getCharDetail = require('./controllers/getCharDetail')
+const express = require('express');
+const router = require("./routes/index");
+const morgan = require("morgan");
+const cors = require("cors");
 
-const PORT = 3001;
+const server = express();
+server.use(express.json())
+server.use(morgan("dev"))
+server.use(cors({
+    origin: '*', // permitimos la solicitud de cualquier origen
+    methods: 'GET, PUT, HEAD, PATCH, POST, DELETE', // especificamos los metodos permitidos
+    preflightContinue: false, // hasta aqui situamos la solicitud proflight
+    optionsSuccessStatus: 204, // establecemos el codigo de estado de la respuesta que son exitosas
+}))
 
-http.createServer((req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    
-    const { url } = req;
+server.use("/", router)
 
-    if (url.includes('onsearch')) {
-        const id = url.split('/').at(-1);
-        getCharById(res, id)
-    }
-
-    if (url.includes('detail')) {
-        const id = url.split('/').at(-1);
-        getCharDetail(res, id)
-    }
-}).listen(PORT, 'localhost')
+module.exports = server
 

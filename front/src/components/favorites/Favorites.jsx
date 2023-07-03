@@ -4,7 +4,7 @@ import Card from '../card/Card'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import './Favorites.css'
-import { getFavorites } from '../../redux/actions'
+import { getFavorites, orderCards } from '../../redux/actions'
 
 const Favorites = () => {
     
@@ -13,6 +13,16 @@ const Favorites = () => {
     useEffect(() => {
         dispatch(getFavorites())
     }, [])
+
+    // const orderCharac = (evento) => {
+    //     dispatch(orderCards(evento.target.value))
+    //     console.log(evento.target.value)
+    // }
+
+    // const filterCards = (evento) => {
+    //     dispatch(filterCards(evento.target.value))
+    //     console.log(evento.target.value)
+    // }
     
   return (
       <div className='divFavorites'>

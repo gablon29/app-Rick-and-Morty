@@ -1,27 +1,18 @@
-const axios = require('axios')
-const URL_API = 'https://rickandmortyapi.com/api/character'
+const axios  = require("axios");
+const { response } = require("express");
 
-const respuesta = (response,res) => {
-    const { id, image, name, gender, species } = response.data;
-            res.writeHead(200, { 'Content-Type': 'application/json' })
-            res.end(JSON.stringify({ id, image, name, gender, species }))
+const URL = "https://rickandmortyapi.com/api/character"
+
+const getCharById = (req, res) => {
+    const { id } = req.params;
+    axios.get(`${URL}/${id}`).then(response => {
+            const { id, name, species, image, gender } = response.data;
+           res.status(200).json({ id, name, species, image, gender });
+    })
+        .catch(error => {
+            res.status(500).json({ error: error.message })
+        })
+    
 }
 
-const errorCb = (error, res) => {
-     (500, { 'Content-Type': 'text/plain' })
-            res.end(error.message);
-}
-
-/**
- * hacemos la peticion con axios
- * creando a su paralelo una funcion que reciba dos parametros 
- * para que uno sea la referencia a la hora de pedir los valores del objeto data
- * y la otra la referencia para ejecutar los metodos de respuesta de la promesa
- */
-const getCharById = (res, id) => {
-    axios.get(`${URL_API}/${id}`) 
-        .then(response => respuesta(response, res))
-        .catch(error => errorCb(error, res))
-};
- 
 module.exports = getCharById;
