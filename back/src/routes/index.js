@@ -3,19 +3,16 @@ const router = Router();
 const getCharById = require("../controllers/getCharById");
 const getCharDetail = require("../controllers/getCharDetail");
 let fav = require("../utils/favs");
+const { createRecord } = require("../Users/controller/create");
+const { paintRecord } = require("../Users/controller/getUsers");
 
 router.get("/onsearch/:id", getCharById);
 
 router.get("/detail/:id", getCharDetail);
 
-router.post("/fav", (req, res) => {
-    fav.push(req.body)
-    return res.status(200).json("Agregado con Exito")
-});
+router.post("/", createRecord)
 
-router.get("/fav", (req, res) => {
-    return res.status(200).json(fav)
-});
+router.get("/", paintRecord);
 
 router.delete("/fav/:id", (req, res) => {
     const { id } = req.params;
