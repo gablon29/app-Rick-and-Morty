@@ -1,18 +1,20 @@
 const { Router } = require("express");
 const router = Router();
-const getCharById = require("../controllers/getCharById");
 const getCharDetail = require("../controllers/getCharDetail");
 let fav = require("../utils/favs");
 const { createRecord } = require("../Users/controller/create");
-const { paintRecord } = require("../Users/controller/getUsers");
+const { paintRecordUsers } = require("../Users/controller/getUsers");
+const { getCharAll, get_characters } = require("../Characters/controllers/charAll");
 
-router.get("/onsearch/:id", getCharById);
 
 router.get("/detail/:id", getCharDetail);
 
 router.post("/", createRecord)
 
-router.get("/", paintRecord);
+router.get("/users", paintRecordUsers);
+
+router.get('/', getCharAll)
+router.get('/characters', get_characters )
 
 router.delete("/fav/:id", (req, res) => {
     const { id } = req.params;

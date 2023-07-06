@@ -10,7 +10,7 @@ async function $get_record_users() {
     };
 };
 
-const paintRecord = async (req, res) => {
+const paintRecordUsers = async (req, res) => {
     try {
         const usersData = await $get_record_users();
         res.status(201).json(usersData);
@@ -20,5 +20,5 @@ const paintRecord = async (req, res) => {
 };
 
 module.exports = {
-    paintRecord
+    paintRecordUsers
 }
