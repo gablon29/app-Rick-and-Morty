@@ -10,11 +10,6 @@ const createCharactersRecords = async (newRecord) => {
         console.error(error.message);
     }
 } 
-// const createRecord = (array) => {
-//     return array.forEach(({ id, name, status }) => {
-//         return createCharactersRecords({id, name, status});        
-//     });
-// } 
 
 const $addCharactersOnDataBase = async () => {
     try {
@@ -62,5 +57,6 @@ const get_characters = async (req, res) => {
 
 module.exports = {
     get_characters,
-    getCharAll 
+    getCharAll,
+    $addCharactersOnDataBase
 }
