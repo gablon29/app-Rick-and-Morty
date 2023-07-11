@@ -57,5 +57,6 @@ const get_characters = async (req, res) => {
 
 module.exports = {
     get_characters,
-    getCharAll 
+    getCharAll,
+    $addCharactersOnDataBase
 }
