@@ -13,6 +13,7 @@ export const Cards = ({ character, onClose }) => {
                     return (
                         <Card
                             key={id}
+                            id={id}
                             name={name} species={species} gender={gender}
                             image={image} onClose={onClose}
                         />

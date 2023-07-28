@@ -23,10 +23,16 @@ const Home = () => {
       return character;
     }
   }
+  const onClose = (id) => {
+    const deleteChar = character.filter(char => char.id !== Number(id))
+    console.log(id)
+    setCharacters(deleteChar)
+  }
+
     return (
         <div>
         <Nav onSearch={onSearch}/>
-        <Cards character={character}/>
+        <Cards character={character} onClose={onClose}/>
         </div>
     )
 }

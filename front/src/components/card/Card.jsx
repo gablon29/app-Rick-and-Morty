@@ -10,6 +10,43 @@ import './Card.css';
 const Card = ({id, name, species, gender, image, onClose}) => {
 
     
+    
+    return (
+        <div className='divCards'>
+            
+            {/* {
+            isFav ? (
+                <button onClick={handleFavorite}>❤️</button>
+            ) : (
+                <button onClick={handleFavorite}>🤍</button>
+            )
+            }; */}
+
+            <button onClick={() => onClose(id)}>X</button>
+            <NavLink className='navLink' to={`/detail/${id}`}>
+                <h2 className='cardh2'>{name}</h2>
+            </NavLink>
+            <img src={image} alt="imagen" />.
+            
+            <h2 className='cardh2'>{species}</h2>
+
+            <h2 className='cardh2' >{gender}</h2>
+            
+            
+        </div>
+    )
+
+    
+}
+export default Card;
+// const mapDispatchToProps = (dispatch) => {
+    //     return {
+        //         removeChar: (id) => dispatch(removeChar(id))
+//     }
+// }
+
+
+
 //     const [isFav, setIsFav] = useState(false);
 //     const dispatch = useDispatch()
 
@@ -43,40 +80,3 @@ const Card = ({id, name, species, gender, image, onClose}) => {
 //       }
 //    })
 // }, [favorites])
-
-    return (
-        <div className='divCards'>
-            
-            {/* {
-            isFav ? (
-                <button onClick={handleFavorite}>❤️</button>
-            ) : (
-                <button onClick={handleFavorite}>🤍</button>
-            )
-            }; */}
-
-            <button onClick={() => onClose(id)}>X</button>
-            <NavLink className='navLink' to={`/detail/${id}`}>
-                <h2 className='cardh2'>{name}</h2>
-            </NavLink>
-            <img src={image} alt="imagen" />.
-            
-            <h2 className='cardh2'>{species}</h2>
-
-            <h2 className='cardh2' >{gender}</h2>
-            
-            
-        </div>
-    )
-
-    
-}
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         removeChar: (id) => dispatch(removeChar(id))
-//     }
-// }
-
-
-    
-export default Card;
