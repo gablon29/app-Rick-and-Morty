@@ -1,36 +1,14 @@
 import './App.css';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { action_getallcharacters } from './redux/actionSlice';
-import { Cards } from './components/cards/Cards';
-import { Nav } from './components/navbar/Nav';
-import { validation } from './components/search/validation';
+import Home from './components/views/home/Home';
 
 
 function App() {
-  const { characters } = useSelector(state => state.characters)
-  const [character, setCharacters] = useState([])
-  const dispatch = useDispatch()
   
-  useEffect(() => {
-    dispatch(action_getallcharacters())
-  }, [dispatch])
-
-  
-  const onSearch =  (charac) => {
-    const char = validation(charac, characters, character);
-    if (char) {
-      setCharacters([...character, char])
-    } else {
-      return character;
-    }
-  }
 
   
   return (
     <div className="App">
-    <Nav onSearch= {onSearch}/>
-    <Cards character={character} />
+    <Home/>
     </div>
   );
 }
