@@ -1,19 +1,50 @@
 import './App.css';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { action_getallcharacters } from './redux/actionSlice';
-// import { Cards } from './components/cards/Cards';
-// import { Nav } from './components/navbar/Nav';
+import { Cards } from './components/cards/Cards';
+import { Nav } from './components/navbar/Nav';
+import { validation } from './components/search/validation';
+
+
+function App() {
+  const { characters } = useSelector(state => state.characters)
+  const [character, setCharacters] = useState([])
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    dispatch(action_getallcharacters())
+  }, [dispatch])
+
+  
+  const onSearch =  (charac) => {
+    const char = validation(charac, characters, character);
+    if (char) {
+      setCharacters([...character, char])
+    } else {
+      return character;
+    }
+  }
+
+  
+  return (
+    <div className="App">
+    <Nav onSearch= {onSearch}/>
+    <Cards character={character} />
+    </div>
+  );
+}
+
+
+export default App;
+
 // import { useNavigate, Route, Routes, useLocation } from 'react-router-dom';
 // import About from './components/about/About';
 // import Detail from './components/detail/Detail';
 // import Form from './components/form/Form';
-// import Favorites from './components/favorites/Favorites';
-
-
-
-function App() {
-  // const navigate = useNavigate()
+// import Favorites from './components/favorites/Favorites'
+// mejorar la interfaz grafica para el mejor rendimiento de la aplicacion.
+// const navigate = useNavigate()
   // const [access, setAccess] = useState(false);
 
   // const username = 'gabriellondero@gmail.com'
@@ -51,27 +82,3 @@ function App() {
   // }
   
   // const { pathname } = useLocation();
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(action_getallcharacters())
-  },[dispatch])
-    
-  
-  return (
-    <div className="App">
-      {/* { pathname !== '/' && <Nav onSearch= {onSearch}/>}
-      <Routes>
-        <Route path='/' element={<Form login={login} />}/>
-        <Route path='/about' element={<About />} />
-        <Route path='/home' element={<Cards characters={characters} onClose={onClose} />}/>
-        <Route path='/detail/:detailId' element={<Detail />} />
-        <Route path='/favorites' element={<Favorites/>}/>
-      </Routes> */}
-    
-    </div>
-  );
-}
-
-
-export default App;
-// mejorar la interfaz grafica para el mejor rendimiento de la aplicacion.

@@ -1,12 +1,13 @@
 import { useState } from "react"
 
 export const SearchBar = ({onSearch}) => {
-    
+   // ejecutamos la funcion que viene por props
+
     const [character, setCharacter] = useState('');
 
     const handleChange = (evento) => {
         const value = evento.target.value
-        setCharacter(value)
+        setCharacter(value) // send the string that contein the number
     }
 
     return (

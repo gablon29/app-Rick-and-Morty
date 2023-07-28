@@ -1,18 +1,18 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import Card from '../card/Card'
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import './Favorites.css'
-import { getFavorites, orderCards } from '../../redux/actions'
+// import { useSelector } from 'react-redux'
+// import Card from '../card/Card'
+// import { useEffect } from 'react'
+// import { useDispatch } from 'react-redux'
+// import './Favorites.css'
+// import { getFavorites, orderCards } from '../../redux/actions'
 
 const Favorites = () => {
     
-    const favorites = useSelector((state) => state.myFavorites)
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(getFavorites())
-    }, [])
+    // const favorites = useSelector((state) => state.myFavorites)
+    // const dispatch = useDispatch()
+    // useEffect(() => {
+    //     dispatch(getFavorites())
+    // }, [])
 
     // const orderCharac = (evento) => {
     //     dispatch(orderCards(evento.target.value))
@@ -26,7 +26,7 @@ const Favorites = () => {
     
   return (
       <div className='divFavorites'>
-          {
+          {/* {
               favorites.map(({ id, name, species, gender, image }) => {
                   return (
                       <Card
@@ -37,7 +37,7 @@ const Favorites = () => {
                       />
                   )
               })
-          }
+          } */}
     </div>
   )
 }

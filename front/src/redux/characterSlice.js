@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     characters: [],
+    characterSelect: [],
     detail: {},
 };
 
@@ -11,9 +12,12 @@ export const characterSlice = createSlice({
     reducers: {
         getallcharacters: (state, action) => {
             state.characters = action.payload
-        }
+        },
+        getCharById: (state, action) => {
+            state.characterSelect = action.payload
+        },
     }
 });
 
-export const { getallcharacters } = characterSlice.actions;
+export const { getallcharacters, getCharById } = characterSlice.actions;
 export default characterSlice.reducer

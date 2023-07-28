@@ -36,15 +36,6 @@ const $addCharactersOnDataBase = async () => {
     }
 };
 
-const getCharAll = async (req, res) => {
-    try {
-        const charactersList = await $addCharactersOnDataBase();
-        res.status(201).send('<h1>dataBase up</h1>')
-    } catch (error) {
-        console.error(error.message)
-    }
-}
-
 const get_characters = async (req, res) => {
     try {
         const characters = await Characters.findAll();
@@ -57,6 +48,5 @@ const get_characters = async (req, res) => {
 
 module.exports = {
     get_characters,
-    getCharAll,
     $addCharactersOnDataBase
 }
