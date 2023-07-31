@@ -3,24 +3,29 @@ import { NavLink } from 'react-router-dom';
 import './Card.css';
 // import { useDispatch, useSelector } from 'react-redux';
 // import {  getFavorites } from '../../redux/actions';
-// import { useState, useEffect } from 'react';
+import { useState } from 'react';
 // import axios from "axios";
 
 
 const Card = ({id, name, species, gender, image, onClose}) => {
 
+    const [ isFav, setIsFav ] = useState(false);
     
-    
+    const handleFavorite = (e) => {
+        e.preventDefault();
+        console.log({id, name, species, gender, image})
+    }
+
     return (
         <div className='divCards'>
             
-            {/* {
+            {
             isFav ? (
                 <button onClick={handleFavorite}>❤️</button>
             ) : (
                 <button onClick={handleFavorite}>🤍</button>
             )
-            }; */}
+            };
 
             <button onClick={() => onClose(id)}>X</button>
             <NavLink className='navLink' to={`/detail/${id}`}>
