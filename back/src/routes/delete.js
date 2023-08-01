@@ -1,7 +1,7 @@
+const { ordenDeEliminarFavoritos } = require('../Favorites/controllers/deleteFav');
+
 const routerDelete = require('express').Router();
 
-routerDelete.delete('/characters', (req, res) => {
-    console.log('Servidor levantado')
-})
+routerDelete.delete('/characters', ordenDeEliminarFavoritos)
 
 module.exports = routerDelete;
