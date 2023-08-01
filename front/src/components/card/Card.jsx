@@ -4,6 +4,7 @@ import './Card.css';
 // import { useDispatch, useSelector } from 'react-redux';
 // import {  getFavorites } from '../../redux/actions';
 import { useState } from 'react';
+import { newFavorites } from '../../hook/addFavorites';
 // import axios from "axios";
 
 
@@ -13,8 +14,14 @@ const Card = ({id, name, species, gender, image, onClose}) => {
     
     const handleFavorite = (e) => {
         e.preventDefault();
-        console.log({id, name, species, gender, image})
+        if (isFav) {
+            setIsFav(false)
+        } else {
+            newFavorites(id)
+            setIsFav(true)
+        }
     }
+
 
     return (
         <div className='divCards'>

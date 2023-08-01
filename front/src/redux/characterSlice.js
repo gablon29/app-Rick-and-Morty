@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     characters: [],
-    characterSelect: [],
+    characterFavorites: [],
     detail: {},
 };
 
@@ -13,11 +13,11 @@ export const characterSlice = createSlice({
         getallcharacters: (state, action) => {
             state.characters = action.payload
         },
-        getCharById: (state, action) => {
-            state.characterSelect = action.payload
+        getCharfavorites: (state, action) => {
+            state.characterFavorites = action.payload
         },
     }
 });
 
-export const { getallcharacters, getCharById } = characterSlice.actions;
+export const { getallcharacters, getCharfavorites } = characterSlice.actions;
 export default characterSlice.reducer
