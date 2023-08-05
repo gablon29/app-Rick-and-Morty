@@ -1,0 +1,3 @@
+* En la peticion de post mandar a traves de una function por parametro el userId y charId
+
+* Funcion de eliminar favoritos toma por parametro un (userId, charId) y lo elimina de la lista

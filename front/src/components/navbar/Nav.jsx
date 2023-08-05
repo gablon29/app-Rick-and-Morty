@@ -8,7 +8,7 @@ export const Nav = (props) => {
             <div className="btn-search">
             <SearchBar onSearch={props.onSearch} />
             </div>
-        <div className="links">
+        {/* <div className="links">
             <Link to='/about'>
                 <h2>About</h2>
             </Link>
@@ -22,7 +22,7 @@ export const Nav = (props) => {
                     Favorites
                 </h2>
                 </Link>
-                </div>
+                </div> */}
         </div>
     )
 }

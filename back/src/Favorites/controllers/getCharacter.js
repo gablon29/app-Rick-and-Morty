@@ -2,26 +2,10 @@ const { Characters, Users, Favorites } = require('../../db');
 
 const get_characters = async (charId, userId) => {
     try {
-        const user = await Users.findAll({
-            where: {
-                id: userId,
-            }
-        })
-        const char = await Characters.findAll({
-            where: {
-                id: charId,
-            }
-        });
-        await Favorites.create({
-            userId: userId,
-            characterId: charId
-        })
-        const fav = await Favorites.findAll({
-            where: {
-                userId: userId
-            }
-        });
-        return fav;
+        const user = await Users.findByPk(userId)
+        const char = await Characters.findByPk(charId);
+         char.addUsers(user)
+        return char;
     } catch (error) {
         console.error(error.message);
     }
@@ -40,12 +24,10 @@ const $character = async (req, res) => {
 const getFavorites = async (req, res) => {
     try {
         const { id } = req.params;
-        const fav = await Favorites.findAll({
-           where: { 
-            userId: id
-           }
+        const fav = await Users.findByPk( id, {
+            include: [Characters]
         })
-        res.status(201).send(fav);
+        res.status(201).json(fav);
     } catch (error) {
         console.error(error.message)
     }
