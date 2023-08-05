@@ -5,6 +5,7 @@ import './Card.css';
 // import {  getFavorites } from '../../redux/actions';
 import { useState } from 'react';
 import { newFavorites } from '../../hook/addFavorites';
+import { deleteFav } from '../../hook/deleteFav';
 // import axios from "axios";
 
 
@@ -16,6 +17,7 @@ const Card = ({id, name, species, gender, image, onClose}) => {
         e.preventDefault();
         if (isFav) {
             setIsFav(false)
+            deleteFav(id)
         } else {
             newFavorites(id)
             setIsFav(true)
