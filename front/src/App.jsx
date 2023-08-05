@@ -1,19 +1,25 @@
 import './App.css';
 import Home from './components/views/home/Home';
-import { Routes, Route } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RootErrorBoundary } from './routes.tsx';
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home/>,
+    errorElement: <RootErrorBoundary/>
+  },
+]);
 function App() {
-  
-
   
   return (
     <div className="App">
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-      </Routes>
+      <RouterProvider router={router}/>
     </div>
   );
 }
+
+  
 
 
 export default App;

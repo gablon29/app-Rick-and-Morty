@@ -3,6 +3,7 @@ import { useRouteError } from "react-router-dom";
 
 export function RootErrorBoundary() {
     let error = useRouteError() as Error;
+    console.error(error);
     return (
         <div>
             <h1>Uh oh, something went terribly wrong 🤯</h1>
