@@ -1,13 +1,13 @@
 import axios from "axios";
 
-export const deleteFav = (charId) => {
+export const deleteFav = (userId,charId) => {
     const dataSend = {
-        user: 1,
-        character: charId
+        user: userId,
+        character: charId,
     }
 
     axios.delete('http://localhost:3001/characters', dataSend)
     .then(res => {
-        console.log('Personaje eliminado', res.data)})
+        console.log('Personaje eliminado', dataSend)})
         .catch(error => console.error(error.message));
 };

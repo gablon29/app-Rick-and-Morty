@@ -3,28 +3,38 @@ import { NavLink } from 'react-router-dom';
 import './Card.css';
 // import { useDispatch, useSelector } from 'react-redux';
 // import {  getFavorites } from '../../redux/actions';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { newFavorites } from '../../hook/addFavorites';
 import { deleteFav } from '../../hook/deleteFav';
+import { useDispatch, useSelector } from 'react-redux';
+import { verificacion } from '../../hook/verificacion';
+import { action_getCharfavorites } from '../../redux/actionSlice';
 // import axios from "axios";
 
 
 const Card = ({id, name, species, gender, image, onClose}) => {
-
-    const [ isFav, setIsFav ] = useState(false);
     
+    const { Characters } = useSelector(state => state.characters.characterFavorites)
+    const [ isFav, setIsFav ] = useState(false);
+    const dispatch =  useDispatch()
+    useEffect(() => {
+        dispatch(action_getCharfavorites())
+        verificacion(id, Characters, setIsFav)
+        }, []);
+
     const handleFavorite = (e) => {
         e.preventDefault();
         if (isFav) {
             setIsFav(false)
-            deleteFav(id)
+            deleteFav(1,id)
         } else {
             newFavorites(id)
             setIsFav(true)
         }
     }
-
-
+        
+    
+    
     return (
         <div className='divCards'>
             

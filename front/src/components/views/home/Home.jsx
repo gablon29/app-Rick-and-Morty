@@ -2,16 +2,19 @@ import { Cards } from "../../cards/Cards";
 import { Nav } from "../../navbar/Nav";
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { action_getallcharacters } from '../../../redux/actionSlice';
+import { action_getCharfavorites, action_getallcharacters } from '../../../redux/actionSlice';
 import { validation } from "../../search/validation";
 
 const Home = () => {
   const { characters } = useSelector(state => state.characters)
+  const favoritos = useSelector(state => state.characters.characterFavorites)
   const [character, setCharacters] = useState([])
   const dispatch = useDispatch()
   
   useEffect(() => {
+    dispatch(action_getCharfavorites())
     dispatch(action_getallcharacters())
+    console.log(favoritos)
   }, [dispatch])
 
   
