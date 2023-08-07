@@ -1,19 +1,19 @@
 import './App.css';
 import Home from './components/views/home/Home';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { RootErrorBoundary } from './routes.tsx';
 import Favorites from '../src/components/favorites/Favorites'
 
 function App() {
   
   return (
-    <BrowserRouter basename='/home'>
     <div className="App">
       <Routes>
-        <Route path='/*' element={<Home/>}/>
+          <Route path='/' element={<Home/>}/>
+          <Route path='favorites' element={<Favorites/>}/>
+          {/* renderizado para rutas incorrectas */}
       </Routes>
     </div>
-    </BrowserRouter>
   );
 }
 

@@ -10,5 +10,4 @@ export const action_getCharfavorites = () => (dispatch) => {
     axios.get(`http://localhost:3001/favorites/1`)
     .then(res => dispatch(getCharfavorites(res.data)))
     .catch(err => console.error(err.message))
-}
-
+};
