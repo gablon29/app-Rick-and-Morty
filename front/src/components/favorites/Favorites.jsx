@@ -1,27 +1,17 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react'
 
 
 const Favorites = () => {
-    
-    const { characterFavorites } = useSelector(state => state.characterFavorites); 
-    const [ favorites, setFavorites ] = useState([]);
-    const dispatch = useDispatch();
-
     return (
-        <div className='divFavorites'>
-          {
-              favorites.map(({ id, name, species, gender, image }) => {
-                  return (
-                      <Card
-                          key={id}
-                          id={id}
-                          name={name} species={species} gender={gender}
-                          image={image}
-                      />
-                  )
-              })
-          }
+        <div>
+        <h1>hola mundo</h1>
+        <h1>hola mundo</h1>
+        <h1>hola mundo</h1>
+        <h1>hola mundo</h1>
+        <h1>hola mundo</h1>
+        <h1>hola mundo</h1>
+        <h1>hola mundo</h1>
+        <h1>hola mundo</h1>
     </div>
   )
 }
