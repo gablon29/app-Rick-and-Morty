@@ -1,7 +1,7 @@
 import './App.css';
 import Home from './components/views/home/Home';
 import { Routes, Route } from "react-router-dom";
-import { RootErrorBoundary } from './routes.tsx';
+import { RootErrorBoundary } from './routes';
 import Favorites from '../src/components/favorites/Favorites'
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path='favorites' element={<Favorites/>}/>
           {/* renderizado para rutas incorrectas */}
+          <Route path='*' element={ <RootErrorBoundary/> }/>
       </Routes>
     </div>
   );
