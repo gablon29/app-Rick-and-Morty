@@ -1,17 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { action_getCharfavorites } from '../../redux/actionSlice';
 
 
 const Favorites = () => {
+  const characterFavorites = useSelector(state => state.characters.characterFavorites);
+  const dispatch = useDispatch();
+  const [ stateFav, setStateFav ] = useState()
+  useEffect(()  => {
+    dispatch(action_getCharfavorites())
+    setStateFav(characterFavorites.character)
+    console.log(characterFavorites)
+  }, [dispatch])
     return (
         <div>
-        <h1>hola mundo</h1>
-        <h1>hola mundo</h1>
-        <h1>hola mundo</h1>
-        <h1>hola mundo</h1>
-        <h1>hola mundo</h1>
-        <h1>hola mundo</h1>
-        <h1>hola mundo</h1>
-        <h1>hola mundo</h1>
+        <h1>Mis favoritos</h1>
     </div>
   )
 }
