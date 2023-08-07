@@ -1,28 +1,19 @@
 import './App.css';
 import Home from './components/views/home/Home';
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { RootErrorBoundary } from './routes.tsx';
 import Favorites from '../src/components/favorites/Favorites'
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home/>,
-    errorElement: <RootErrorBoundary/>, // para manejar ingresos incorrectos
-    children: [ 
-      {
-        path: "/favorites",
-        element: <Favorites/>
-      },
-    ],
-  },
-]);
 function App() {
   
   return (
+    <BrowserRouter basename='/home'>
     <div className="App">
-      <RouterProvider router={router}/>
+      <Routes>
+        <Route path='/*' element={<Home/>}/>
+      </Routes>
     </div>
+    </BrowserRouter>
   );
 }
 
