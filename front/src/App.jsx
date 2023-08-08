@@ -4,21 +4,26 @@ import { Routes, Route } from "react-router-dom";
 import { RootErrorBoundary } from './routes';
 import Favorites from '../src/components/favorites/Favorites'
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { action_getCharfavorites, action_getallcharacters } from './redux/actionSlice';
 
 function App() {
+  const [ actualizado, setActualizado ] = useState(true)
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(action_getallcharacters())
-    dispatch(action_getCharfavorites())
-  }, [dispatch])
+    if(!actualizado) {
+      dispatch(action_getallcharacters())
+      dispatch(action_getCharfavorites())
+      return setActualizado(true)
+    }
+  }, [dispatch, actualizado])
+
   
   return (
     <div className="App">
       <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='favorites' element={<Favorites/>}/>
+          <Route path='/' element={<Home setActualizado={setActualizado}/>}/>
+          <Route path='favorites' element={<Favorites setActualizado={setActualizado}/>}/>
           {/* renderizado para rutas incorrectas */}
           <Route path='*' element={ <RootErrorBoundary/> }/>
       </Routes>
