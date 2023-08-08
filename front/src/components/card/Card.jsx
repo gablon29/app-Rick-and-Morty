@@ -17,16 +17,17 @@ const Card = ({id, name, species, gender, image, onClose}) => {
     const { Characters } = useSelector(state => state.characters.characterFavorites)
     const [ isFav, setIsFav ] = useState(false);
     const dispatch =  useDispatch()
-    useEffect(() => {
-        dispatch(action_getCharfavorites())
-        verificacion(id, Characters, setIsFav)
-        }, []);
+
+    // useEffect(() => {
+    //     dispatch(action_getCharfavorites())
+    //     verificacion(id, Characters, setIsFav)
+    //     }, []);
 
     const handleFavorite = (e) => {
         e.preventDefault();
         if (isFav) {
             setIsFav(false)
-            deleteFav(1,id)
+            deleteFav(id)
         } else {
             newFavorites(id)
             setIsFav(true)

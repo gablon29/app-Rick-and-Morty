@@ -6,15 +6,12 @@ import { action_getCharfavorites } from '../../redux/actionSlice';
 const Favorites = () => {
   const favoritos = useSelector(state => state.characters.characterFavorites);
   const { Characters } = favoritos
-  const dispatch = useDispatch();
   const [ stateFav, setStateFav ] = useState()
-  useEffect(()  => {
-    dispatch(action_getCharfavorites())
-    setStateFav(Characters)
-    console.log(Characters)
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch])
+  // useEffect(()  => {
+  //   setStateFav(Characters)
+  //   console.log(Characters)
+  // }, [])
+  
     return (
         <div>
         <h1>Mis favoritos</h1>

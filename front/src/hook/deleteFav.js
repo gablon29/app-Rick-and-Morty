@@ -1,13 +1,8 @@
 import axios from "axios";
 
-export const deleteFav = (userId,charId) => {
-    const dataSend = {
-        user: userId,
-        character: charId,
-    }
-
-    axios.delete('http://localhost:3001/characters', dataSend)
+export const deleteFav = (charId) => {
+    axios.delete(`http://localhost:3001/1/${charId}`)
     .then(res => {
-        console.log('Personaje eliminado', dataSend)})
+        console.log('Personaje eliminado')})
         .catch(error => console.error(error.message));
 };

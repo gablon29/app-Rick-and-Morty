@@ -16,8 +16,8 @@ const deleteFavoriteFromUser = async (userId, charId) => {
 
 const ordenDeEliminarFavoritos = async (req, res) => {
     try {
-        const { user, character } = req.body;
-        await deleteFavoriteFromUser(user, character)
+        const { userId, characterId } = req.params;
+        await deleteFavoriteFromUser(userId, characterId)
         res.status(200).send('eliminado con exito')
     } catch (error) {
         console.error(error.message)

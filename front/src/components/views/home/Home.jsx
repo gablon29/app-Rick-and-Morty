@@ -4,19 +4,14 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { action_getCharfavorites, action_getallcharacters } from '../../../redux/actionSlice';
 import { validation } from "../../search/validation";
+import { stateGeneral } from "../../../hook/stateGeneral";
 
 const Home = () => {
-  const { characters } = useSelector(state => state.characters)
-  const favoritos = useSelector(state => state.characters.characterFavorites)
+  const characters = stateGeneral()
   const [character, setCharacters] = useState([])
   const dispatch = useDispatch()
   
-  useEffect(() => {
-    dispatch(action_getCharfavorites())
-    dispatch(action_getallcharacters())
-    console.log(favoritos)
-  }, [dispatch])
-
+  console.log(characters)
   
   const onSearch =  (charac) => {
     const char = validation(charac, characters, character);
