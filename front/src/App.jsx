@@ -6,6 +6,7 @@ import Favorites from '../src/components/favorites/Favorites'
 
 function App() {
   
+  
   return (
     <div className="App">
       <Routes>

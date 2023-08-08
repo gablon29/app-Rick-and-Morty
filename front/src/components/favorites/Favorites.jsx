@@ -4,24 +4,21 @@ import { action_getCharfavorites } from '../../redux/actionSlice';
 
 
 const Favorites = () => {
-  const favoritos = useSelector(state => state.characters.characterFavorites);
+  const favoritos = useSelector(state => state.characters?.characterFavorites);
   const { Characters } = favoritos
-  const [ stateFav, setStateFav ] = useState()
-  // useEffect(()  => {
-  //   setStateFav(Characters)
-  //   console.log(Characters)
-  // }, [])
-  
+  useEffect(()  => {
+    console.log(Characters)
+  }, [])
     return (
         <div>
-        <h1>Mis favoritos</h1>
+        {/* <h1>Mis favoritos</h1>
         <h3>{ Characters?.map(char => {
           return (
             <div key={char.id}>
               <h3> {char.name}</h3>
             </div>
           )
-        })}</h3>
+        })}</h3> */}
     </div>
   )
 }
