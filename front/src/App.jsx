@@ -3,9 +3,16 @@ import Home from './components/views/home/Home';
 import { Routes, Route } from "react-router-dom";
 import { RootErrorBoundary } from './routes';
 import Favorites from '../src/components/favorites/Favorites'
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { action_getCharfavorites, action_getallcharacters } from './redux/actionSlice';
 
 function App() {
-  
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(action_getallcharacters())
+    dispatch(action_getCharfavorites())
+  }, [dispatch])
   
   return (
     <div className="App">

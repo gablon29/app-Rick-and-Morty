@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { action_getCharfavorites } from '../../redux/actionSlice';
+import {  useSelector } from 'react-redux'
+import { selectCharactersFavorites } from '../../hook/Selectores'
 
 
 const Favorites = () => {
-  const favoritos = useSelector(state => state.characters?.characterFavorites);
-  const { Characters } = favoritos
-  useEffect(()  => {
-    console.log(Characters)
-  }, [])
+  const characterFavorites = useSelector(selectCharactersFavorites);
+  console.log(characterFavorites)
     return (
         <div>
         {/* <h1>Mis favoritos</h1>
