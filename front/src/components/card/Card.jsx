@@ -1,27 +1,24 @@
 
 import { NavLink } from 'react-router-dom';
 import './Card.css';
-// import { useDispatch, useSelector } from 'react-redux';
-// import {  getFavorites } from '../../redux/actions';
 import { useEffect, useState } from 'react';
 import { newFavorites } from '../../hook/addFavorites';
 import { deleteFav } from '../../hook/deleteFav';
-import { useDispatch, useSelector } from 'react-redux';
 import { verificacion } from '../../hook/verificacion';
-import { action_getCharfavorites } from '../../redux/actionSlice';
-// import axios from "axios";
+import { useSelector } from 'react-redux';
+import { selectCharactersFavorites } from '../../hook/Selectores';
 
 
 const Card = ({id, name, species, gender, image, onClose}) => {
-    
-    const { Characters } = useSelector(state => state.characters.characterFavorites)
-    const [ isFav, setIsFav ] = useState(false);
-    const dispatch =  useDispatch()
 
-    // useEffect(() => {
-    //     dispatch(action_getCharfavorites())
-    //     verificacion(id, Characters, setIsFav)
-    //     }, []);
+    const characterFavorites = useSelector(selectCharactersFavorites);
+    const arrayFavorites = characterFavorites.Characters;
+
+    const [ isFav, setIsFav ] = useState(false);
+
+    useEffect(() => {
+        verificacion(id, arrayFavorites, setIsFav)
+        }, [characterFavorites]);
 
     const handleFavorite = (e) => {
         e.preventDefault();

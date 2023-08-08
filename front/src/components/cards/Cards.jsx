@@ -4,14 +4,14 @@ import './Cards.css'
 // import { useEffect } from "react"
 // import { getFavorites } from "../../redux/actions"
 
-export const Cards = ({ character, onClose }) => {
+export const Cards = ({arrayFavorites, character, onClose }) => {
     
     return (
         <div className="conteinerCard">
             {
                 character.map(({ id, name, species, gender, image}) => {
                     return (
-                        <Card
+                        <Card arrayFavorites={arrayFavorites}
                             key={id}
                             id={id}
                             name={name} species={species} gender={gender}
