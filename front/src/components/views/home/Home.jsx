@@ -7,7 +7,8 @@ import { validation } from "../../search/validation";
 import { stateGeneral } from "../../../hook/stateGeneral";
 
 const Home = () => {
-  const characters = stateGeneral()
+  const { characters } = useSelector(state => state.characters)
+  const {Characters} = useSelector(state => state.characters?.characterFavorites)
   const [character, setCharacters] = useState([])
   const dispatch = useDispatch()
   
