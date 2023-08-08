@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export const newFavorites = (character) => {
     const dataSend = {
-        user: 1,
-        character: character
+        userId: 1,
+        charId: character
     }
     axios.post('http://localhost:3001/characters', dataSend)
     .then(res => {

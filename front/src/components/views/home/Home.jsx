@@ -7,14 +7,14 @@ import { validation } from "../../search/validation";
 
 const Home = () => {
   const { characters } = useSelector(state => state.characters)
-  const favoritos = useSelector(state => state.characters.characterFavorites)
+  const {Characters} = useSelector(state => state.characters?.characterFavorites)
   const [character, setCharacters] = useState([])
   const dispatch = useDispatch()
   
   useEffect(() => {
     dispatch(action_getCharfavorites())
     dispatch(action_getallcharacters())
-    console.log(favoritos)
+    console.log(Characters)
   }, [dispatch])
 
   
