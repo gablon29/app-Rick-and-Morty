@@ -5,17 +5,19 @@ import { selectCharactersFavorites } from '../../hook/Selectores'
 
 const Favorites = () => {
   const characterFavorites = useSelector(selectCharactersFavorites);
-  console.log(characterFavorites)
+  const [ actualizado, setActualizado ] = useState(false)
+  
     return (
         <div>
-        {/* <h1>Mis favoritos</h1>
-        <h3>{ Characters?.map(char => {
+        <h1>Mis favoritos</h1>
+        <h3>{ characterFavorites?.Characters?.map(char => {
           return (
             <div key={char.id}>
               <h3> {char.name}</h3>
+              <img src={char.image} alt='imagen'/>
             </div>
           )
-        })}</h3> */}
+        })}</h3>
     </div>
   )
 }

@@ -6,7 +6,7 @@ import { selectCharacter } from '../../../hook/Selectores';
 import { validation } from "../../search/validation";
 
 
-const Home = () => {
+const Home = ({isFav, setIsFav, setActualizado }) => {
   const [ character, setCharacters ] = useState([])
   const characters = useSelector(selectCharacter);
   
@@ -27,7 +27,7 @@ const Home = () => {
   return (
       <div>
       <Nav onSearch={onSearch}/>
-      <Cards character={character} onClose={onClose}/>
+      <Cards isFav={isFav} setIsFav={setIsFav} setActualizado={setActualizado} character={character} onClose={onClose}/>
       </div>
   )
   }

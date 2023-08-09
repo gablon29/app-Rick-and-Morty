@@ -8,13 +8,14 @@ import { useEffect, useState } from 'react';
 import { action_getCharfavorites, action_getallcharacters } from './redux/actionSlice';
 
 function App() {
-  const [ actualizado, setActualizado ] = useState(true)
+  const [ actualizado, setActualizado ] = useState(false)
+  const [ isFav, setIsFav ] = useState(false);
   const dispatch = useDispatch()
   useEffect(() => {
     if(!actualizado) {
       dispatch(action_getallcharacters())
       dispatch(action_getCharfavorites())
-      return setActualizado(true)
+      setActualizado(true)
     }
   }, [dispatch, actualizado])
 
@@ -22,8 +23,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-          <Route path='/' element={<Home setActualizado={setActualizado}/>}/>
-          <Route path='favorites' element={<Favorites setActualizado={setActualizado}/>}/>
+          <Route path='/' element={<Home isFav={isFav} setIsFav={setIsFav} setActualizado={setActualizado}/>}/>
+          <Route path='favorites' element={<Favorites isFav={isFav} setIsFav={setIsFav} setActualizado={setActualizado}/>}/>
           {/* renderizado para rutas incorrectas */}
           <Route path='*' element={ <RootErrorBoundary/> }/>
       </Routes>

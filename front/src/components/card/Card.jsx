@@ -9,26 +9,25 @@ import { useSelector } from 'react-redux';
 import { selectCharactersFavorites } from '../../hook/Selectores';
 
 
-const Card = ({id, name, species, gender, image, onClose}) => {
-
-    const characterFavorites = useSelector(selectCharactersFavorites);
-    const arrayFavorites = characterFavorites.Characters;
-
-    const [ isFav, setIsFav ] = useState(false);
+const Card = ({ isFav, setIsFav, setActualizado, id, name, species, gender, image, onClose}) => {
+    let characterFavorites = useSelector(selectCharactersFavorites);
+    let arrayFavorites = characterFavorites.Characters;
 
     useEffect(() => {
         verificacion(id, arrayFavorites, setIsFav)
         }, [characterFavorites]);
 
-    const handleFavorite = (e) => {
+    const handleDeleteFavorite = async (e) => {
         e.preventDefault();
-        if (isFav) {
-            setIsFav(false)
-            deleteFav(id)
-        } else {
-            newFavorites(id)
-            setIsFav(true)
-        }
+        setIsFav(false)
+       await deleteFav(id);
+       await setActualizado(false)
+    }
+    const handleAddFavorite = async (e) => {
+        e.preventDefault();
+        setIsFav(true)
+        newFavorites(id)
+        await setActualizado(false)
     }
         
     
@@ -38,9 +37,9 @@ const Card = ({id, name, species, gender, image, onClose}) => {
             
             {
             isFav ? (
-                <button onClick={handleFavorite}>❤️</button>
+                <button onClick={handleDeleteFavorite}>❤️</button>
             ) : (
-                <button onClick={handleFavorite}>🤍</button>
+                <button onClick={handleAddFavorite}>🤍</button>
             )
             };
 
