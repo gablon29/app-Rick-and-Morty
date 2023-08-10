@@ -4,16 +4,14 @@ import './Cards.css'
 // import { useEffect } from "react"
 // import { getFavorites } from "../../redux/actions"
 
-export const Cards = ({ isFav, setIsFav, setActualizado, character, onClose }) => {
+export const Cards = ({ setActualizado, character, onClose }) => {
     
     return (
         <div className="conteinerCard">
             {
                 character.map(({ id, name, species, gender, image}) => {
                     return (
-                        <Card  
-                        isFav={isFav} 
-                        setIsFav={setIsFav} 
+                        <Card
                         setActualizado={setActualizado}
                         key={id}
                         id={id}

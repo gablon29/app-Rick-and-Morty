@@ -9,7 +9,6 @@ import { action_getCharfavorites, action_getallcharacters } from './redux/action
 
 function App() {
   const [ actualizado, setActualizado ] = useState(false)
-  const [ isFav, setIsFav ] = useState(false);
   const dispatch = useDispatch()
   useEffect(() => {
     if(!actualizado) {
@@ -25,14 +24,10 @@ function App() {
       <Routes>
           <Route path='/'
             element={<Home
-            isFav={isFav} 
-            setIsFav={setIsFav} 
             setActualizado={setActualizado}/>} 
             />
           <Route path='favorites' 
           element={<Favorites 
-          isFav={isFav} 
-          setIsFav={setIsFav}
           setActualizado={setActualizado}/>}
           />
           {/* renderizado para rutas incorrectas */}
