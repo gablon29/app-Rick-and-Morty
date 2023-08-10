@@ -1,26 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import {  useSelector } from 'react-redux'
+import  Card  from "../card/Card"
 import { selectCharactersFavorites } from '../../hook/Selectores'
 
 
-const Favorites = ({ isFav, setIsFav }) => {
+const Favorites = ({ isFav, setIsFav, setActualizado }) => {
   const characterFavorites = useSelector(selectCharactersFavorites);
-
-  const handleInputChange = (e) => {
-    e.preventDefault();
-  }
   
     return (
         <div>
         <h1>Mis favoritos</h1>
-        <h3>{ characterFavorites?.Characters?.map(char => {
-          return (
-            <div key={char.id}>
-              <h3> {char.name}</h3>
-              <img src={char.image} alt='imagen'/>
-            </div>
-          )
-        })}</h3>
+        <h3>{ 
+          characterFavorites?.Characters?.map(({ id, name, species, gender, image }) => {
+                    return (
+                        <Card  
+                        isFav={isFav} 
+                        setIsFav={setIsFav} 
+                        setActualizado={setActualizado}
+                        key={id}
+                        id={id}
+                        name={name} species={species} gender={gender}
+                        image={image}
+                        />
+                )})}</h3>
     </div>
   )
 }

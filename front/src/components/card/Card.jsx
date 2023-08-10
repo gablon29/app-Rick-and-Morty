@@ -1,7 +1,7 @@
 
 import { NavLink } from 'react-router-dom';
 import './Card.css';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { newFavorites } from '../../hook/addFavorites';
 import { deleteFav } from '../../hook/deleteFav';
 import { verificacion } from '../../hook/verificacion';
@@ -11,6 +11,7 @@ import { selectCharactersFavorites } from '../../hook/Selectores';
 
 const Card = ({ isFav, setIsFav, setActualizado, id, name, species, gender, image, onClose}) => {
     let characterFavorites = useSelector(selectCharactersFavorites);
+    
     let arrayFavorites = characterFavorites.Characters;
 
     useEffect(() => {

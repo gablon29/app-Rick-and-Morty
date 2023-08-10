@@ -23,7 +23,12 @@ function App() {
   return (
     <div className="App">
       <Routes>
-          <Route path='/' element={<Home isFav={isFav} setIsFav={setIsFav} setActualizado={setActualizado}/>}/>
+          <Route path='/'
+            element={<Home
+            isFav={isFav} 
+            setIsFav={setIsFav} 
+            setActualizado={setActualizado}/>} 
+            />
           <Route path='favorites' 
           element={<Favorites 
           isFav={isFav} 
