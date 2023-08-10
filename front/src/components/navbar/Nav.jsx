@@ -8,21 +8,18 @@ export const Nav = (props) => {
             <div className="btn-search">
             <SearchBar onSearch={props.onSearch} />
             </div>
-        {/* <div className="links">
-            <Link to='/about'>
-                <h2>About</h2>
-            </Link>
-            <Link to='/home'>
+        <div className="links">
+            <Link to='/'>
                 <h2>
                     Home
                 </h2>
             </Link>
-            <Link to='/favorites'>
+            <Link to='favorites'>
                 <h2>
                     Favorites
                 </h2>
                 </Link>
-                </div> */}
+                </div>
         </div>
     )
 }

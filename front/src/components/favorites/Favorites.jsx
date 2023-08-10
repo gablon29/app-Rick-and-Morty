@@ -3,14 +3,18 @@ import {  useSelector } from 'react-redux'
 import  Card  from "../card/Card"
 import { selectCharactersFavorites } from '../../hook/Selectores'
 import './Favorites.css'
+import { Nav } from '../navbar/Nav'
 
 
 const Favorites = ({ isFav, setIsFav, setActualizado }) => {
   const characterFavorites = useSelector(selectCharactersFavorites);
   
     return (
-        <div className='conteinerFavorites'>
-        <h1>Mis favoritos</h1>
+      <>
+        <Nav/>
+        <h1 className='text-central'>Mis favoritos</h1>
+      <div className='conteinerFavorites'>
+        <div className="conteinerCard">
         { 
           characterFavorites?.Characters?.map(({ id, name, species, gender, image }) => {
                     return (
@@ -24,7 +28,9 @@ const Favorites = ({ isFav, setIsFav, setActualizado }) => {
                         image={image}
                         />
         )})}
+        </div>
     </div>
+    </>
   )
 }
 

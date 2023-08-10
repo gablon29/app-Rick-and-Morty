@@ -27,7 +27,7 @@ const Card = ({ isFav, setIsFav, setActualizado, id, name, species, gender, imag
     const handleAddFavorite = async (e) => {
         e.preventDefault();
         setIsFav(true)
-        newFavorites(id)
+        await newFavorites(id)
         await setActualizado(false)
     }
         

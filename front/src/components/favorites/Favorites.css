@@ -4,3 +4,12 @@
     align-items: center;
     width: 100%;
 }
+
+.conteinerCard {
+    display: flex;
+    flex-direction: row;
+}
+
+.text-central {
+    text-align: center;
+}
