@@ -24,7 +24,12 @@ function App() {
     <div className="App">
       <Routes>
           <Route path='/' element={<Home isFav={isFav} setIsFav={setIsFav} setActualizado={setActualizado}/>}/>
-          <Route path='favorites' element={<Favorites isFav={isFav} setIsFav={setIsFav} setActualizado={setActualizado}/>}/>
+          <Route path='favorites' 
+          element={<Favorites 
+          isFav={isFav} 
+          setIsFav={setIsFav}
+          setActualizado={setActualizado}/>}
+          />
           {/* renderizado para rutas incorrectas */}
           <Route path='*' element={ <RootErrorBoundary/> }/>
       </Routes>

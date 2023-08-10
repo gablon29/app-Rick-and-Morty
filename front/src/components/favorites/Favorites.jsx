@@ -3,9 +3,12 @@ import {  useSelector } from 'react-redux'
 import { selectCharactersFavorites } from '../../hook/Selectores'
 
 
-const Favorites = () => {
+const Favorites = ({ isFav, setIsFav }) => {
   const characterFavorites = useSelector(selectCharactersFavorites);
-  const [ actualizado, setActualizado ] = useState(false)
+
+  const handleInputChange = (e) => {
+    e.preventDefault();
+  }
   
     return (
         <div>
