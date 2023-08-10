@@ -1,0 +1,19 @@
+.divCards {
+    display: block;
+    margin: 2rem;
+    border: 2px solid rgb(136, 230, 20);
+    width: max-content;
+    background-color: rgb(44, 46, 48);
+    -webkit-box-shadow: 18px 21px 22px 5px rgba(123, 29, 130, 0.71);
+        -moz-box-shadow: 18px 21px 22px 5px rgba(123, 29, 130, 0.71);
+        box-shadow: 18px 21px 22px 5px rgba(123, 29, 130, 0.71);
+}
+.navLink {
+    text-decoration: none;
+
+}
+.cardh2 {
+    color: rgba(5, 161, 5, 0.831);
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+
+}
