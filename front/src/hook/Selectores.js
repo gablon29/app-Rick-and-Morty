@@ -1,4 +1,4 @@
-import { createSelector } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
 
-export const selectCharacter = state => state.characters.characters;
-export const selectCharactersFavorites = state => state.characters.characterFavorites;
+export const selectCharacter = useSelector;
+export const selectCharactersFavorites = useSelector

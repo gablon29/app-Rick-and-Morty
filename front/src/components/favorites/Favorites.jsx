@@ -7,7 +7,7 @@ import { Nav } from '../navbar/Nav'
 
 
 const Favorites = ({ isFav, setIsFav, setActualizado }) => {
-  const characterFavorites = useSelector(selectCharactersFavorites);
+  const { characterFavorites } = selectCharactersFavorites(state => state.characters)
   
     return (
       <>
@@ -16,7 +16,7 @@ const Favorites = ({ isFav, setIsFav, setActualizado }) => {
       <div className='conteinerFavorites'>
         <div className="conteinerCard">
         { 
-          characterFavorites?.Characters?.map(({ id, name, species, gender, image }) => {
+          characterFavorites.map(({ id, name, species, gender, image }) => {
                     return (
                         <Card  
                         isFav={isFav} 

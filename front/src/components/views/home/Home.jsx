@@ -1,14 +1,13 @@
 import { Cards } from "../../cards/Cards";
 import { Nav } from "../../navbar/Nav";
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { selectCharacter } from '../../../hook/Selectores';
 import { validation } from "../../search/validation";
 
 
 const Home = ({isFav, setIsFav, setActualizado }) => {
   const [ character, setCharacters ] = useState([])
-  const characters = useSelector(selectCharacter);
+  const {characters} = selectCharacter(state => state?.characters)
   
   
   const onSearch =  (charac) => {

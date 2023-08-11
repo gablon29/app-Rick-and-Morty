@@ -1,4 +1,4 @@
-export const verificacion = async (id, array, cb) => {
+export const verificacion =  async (id, array, cb) => {
     try {
         const personaje_registrado = await array.find(arr => arr.id === id) !== undefined;
         if (personaje_registrado) { 

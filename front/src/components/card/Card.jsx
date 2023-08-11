@@ -5,17 +5,15 @@ import { useEffect, useState } from 'react';
 import { newFavorites } from '../../hook/addFavorites';
 import { deleteFav } from '../../hook/deleteFav';
 import { verificacion } from '../../hook/verificacion';
-import { useSelector } from 'react-redux';
 import { selectCharactersFavorites } from '../../hook/Selectores';
 
 
 const Card = ({ setActualizado, id, name, species, gender, image, onClose}) => {
-    let characterFavorites = useSelector(selectCharactersFavorites);
-    let arrayFavorites = characterFavorites.Characters;
+    const { characterFavorites }  = selectCharactersFavorites(state => state.characters);
     const [ isFav, setIsFav ] = useState(false)
 
     useEffect(() => {
-        verificacion(id, arrayFavorites, setIsFav)
+        verificacion(id, characterFavorites, setIsFav)
         }, [characterFavorites]);
 
     const handleDeleteFavorite = async (e) => {

@@ -8,6 +8,6 @@ export const action_getallcharacters = () => async (dispatch) => {
 }; 
 export const action_getCharfavorites =  ()  =>  async (dispatch) => {
    await axios.get(`http://localhost:3001/favorites/1`)
-    .then(res => dispatch(getCharfavorites(res.data)))
+    .then(res => dispatch(getCharfavorites(res.data.Characters)))
     .catch(err => console.error(err.message))
 };
