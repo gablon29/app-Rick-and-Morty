@@ -5,8 +5,8 @@ const UsersModel = require('./Users/model/Users.js');
 const CharactersModel = require('./Characters/model/Chracters.js');
 const FavoritesModel = require('./Favorites/model/Favorites.js')
 
-const sequelize = new
- Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@localhost:5432/${DB_NAME}` ,{
+const sequelize = new 
+Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@localhost:5432/${DB_NAME}` ,{
     logging: false,
     dialect: 'postgres',
  });

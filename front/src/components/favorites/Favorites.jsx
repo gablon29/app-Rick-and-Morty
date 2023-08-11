@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {  useSelector } from 'react-redux'
 import  Card  from "../card/Card"
 import { selectCharactersFavorites } from '../../hook/Selectores'
@@ -7,16 +7,42 @@ import { Nav } from '../navbar/Nav'
 
 
 const Favorites = ({ isFav, setIsFav, setActualizado }) => {
+<<<<<<< HEAD
   const { characterFavorites } = selectCharactersFavorites(state => state.characters)
+=======
+  const characterFavorites = useSelector(selectCharactersFavorites);
+  const { Characters } = characterFavorites;
+  const genders =  Array.from(new Set(Characters.map(char => char.gender)))
+  const [ gender, setGender ] = useState("");
+  const match = gender ? Characters.filter(char => {
+    if (char.gender !== gender) return false
+
+    return true;
+  }) : Characters;
+>>>>>>> 23edaa1f962c31304587dd88cc5272b315648774
   
     return (
       <>
         <Nav/>
         <h1 className='text-central'>Mis favoritos</h1>
+        <select value={gender} onChange={(e) => setGender(e.target.value)}>
+          <option value="">Todos</option>
+          {
+            genders.map(gender => 
+              (
+                <option key={gender} value={gender}>{gender}</option>
+              )
+            )
+          }
+        </select>
       <div className='conteinerFavorites'>
         <div className="conteinerCard">
         { 
+<<<<<<< HEAD
           characterFavorites.map(({ id, name, species, gender, image }) => {
+=======
+          match.map(({ id, name, species, gender, image }) => {
+>>>>>>> 23edaa1f962c31304587dd88cc5272b315648774
                     return (
                         <Card  
                         isFav={isFav} 
