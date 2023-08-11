@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import {  useSelector } from 'react-redux'
 import  Card  from "../card/Card"
 import { selectCharactersFavorites } from '../../hook/Selectores'
 import './Favorites.css'
@@ -7,19 +6,14 @@ import { Nav } from '../navbar/Nav'
 
 
 const Favorites = ({ isFav, setIsFav, setActualizado }) => {
-<<<<<<< HEAD
   const { characterFavorites } = selectCharactersFavorites(state => state.characters)
-=======
-  const characterFavorites = useSelector(selectCharactersFavorites);
-  const { Characters } = characterFavorites;
-  const genders =  Array.from(new Set(Characters.map(char => char.gender)))
+  const genders =  Array.from(new Set(characterFavorites.map(char => char.gender)))
   const [ gender, setGender ] = useState("");
-  const match = gender ? Characters.filter(char => {
+  const match = gender ? characterFavorites.filter(char => {
     if (char.gender !== gender) return false
 
     return true;
-  }) : Characters;
->>>>>>> 23edaa1f962c31304587dd88cc5272b315648774
+  }) : characterFavorites;
   
     return (
       <>
@@ -38,11 +32,7 @@ const Favorites = ({ isFav, setIsFav, setActualizado }) => {
       <div className='conteinerFavorites'>
         <div className="conteinerCard">
         { 
-<<<<<<< HEAD
-          characterFavorites.map(({ id, name, species, gender, image }) => {
-=======
           match.map(({ id, name, species, gender, image }) => {
->>>>>>> 23edaa1f962c31304587dd88cc5272b315648774
                     return (
                         <Card  
                         isFav={isFav} 

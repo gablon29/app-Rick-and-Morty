@@ -7,7 +7,7 @@ import { validation } from "../../search/validation";
 
 const Home = ({isFav, setIsFav, setActualizado }) => {
   const [ character, setCharacters ] = useState([])
-  const {characters} = selectCharacter(state => state?.characters)
+  const { characters } = selectCharacter(state => state?.characters)
   
   
   const onSearch =  (charac) => {
