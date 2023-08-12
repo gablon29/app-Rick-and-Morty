@@ -4,19 +4,18 @@ import { Routes, Route } from "react-router-dom";
 import { RootErrorBoundary } from './routes';
 import Favorites from '../src/components/favorites/Favorites'
 import { useEffect, useState } from 'react';
-import { action_getCharfavorites, action_getallcharacters } from './redux/actionSlice';
 import { dispatchCharacters } from './hook/Selectores';
+import { dispatchAllCharacters, dispatchFavoritesCharacters } from './hook/dispachActions';
 
 function App() {
   const [ actualizado, setActualizado ] = useState(false)
-  const dispatch = dispatchCharacters()
   useEffect(() => {
     if(!actualizado) {
-      dispatch(action_getallcharacters())
-      dispatch(action_getCharfavorites())
+      dispatchAllCharacters()
+      dispatchFavoritesCharacters()
       setActualizado(true)
     }
-  }, [dispatch, actualizado])
+  }, [actualizado])
 
   
   return (
