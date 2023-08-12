@@ -3,13 +3,13 @@ import Home from './components/views/home/Home';
 import { Routes, Route } from "react-router-dom";
 import { RootErrorBoundary } from './routes';
 import Favorites from '../src/components/favorites/Favorites'
-import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { action_getCharfavorites, action_getallcharacters } from './redux/actionSlice';
+import { dispatchCharacters } from './hook/Selectores';
 
 function App() {
   const [ actualizado, setActualizado ] = useState(false)
-  const dispatch = useDispatch()
+  const dispatch = dispatchCharacters()
   useEffect(() => {
     if(!actualizado) {
       dispatch(action_getallcharacters())
