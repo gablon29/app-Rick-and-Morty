@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {  useSelector } from 'react-redux'
 import  Card  from "../card/Card"
 import { selectCharactersFavorites } from '../../hook/Selectores'
 import './Favorites.css'
@@ -6,7 +7,7 @@ import { Nav } from '../navbar/Nav'
 
 
 const Favorites = ({ isFav, setIsFav, setActualizado }) => {
-  const { characterFavorites } = selectCharactersFavorites(state => state.characters)
+  const { characterFavorites } = selectCharactersFavorites(state => state?.characters);
   const genders =  Array.from(new Set(characterFavorites.map(char => char.gender)))
   const [ gender, setGender ] = useState("");
   const match = gender ? characterFavorites.filter(char => {

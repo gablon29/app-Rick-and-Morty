@@ -3,9 +3,9 @@ import { dispatchCharacters } from "./Selectores";
 
 const dispatch = dispatchCharacters();
 
-export const dispatchAllCharacters = async () => {
-    await dispatch(action_getallcharacters());
+export const dispatchAllCharacters = () => {
+    dispatch(action_getallcharacters());
 };
-export const dispatchFavoritesCharacters = async () => {
-    await dispatch(action_getCharfavorites());
+export const dispatchFavoritesCharacters =  () => {
+    dispatch(action_getCharfavorites());
 };
