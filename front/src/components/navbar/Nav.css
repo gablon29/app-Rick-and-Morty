@@ -1,15 +1,17 @@
 .navStyle {
-    background-color: rgba(70, 8, 72, 0.92);
+  background-color: #566573;
 }
-.btn-search{
-    display: flex;
-    justify-content: center;
-    width: 100%;
+.btn-search {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .links {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  text-decoration: none;
+  color: #2bfd45;
 }

@@ -1,57 +1,61 @@
-import React, { useState } from 'react'
-import {  useSelector } from 'react-redux'
-import  Card  from "../card/Card"
-import { selectCharactersFavorites } from '../../hook/Selectores'
-import './Favorites.css'
-import { Nav } from '../navbar/Nav'
-
+import React, { useState } from "react";
+import Card from "../card/Card";
+import { selectCharactersFavorites } from "../../hook/Selectores";
+import "./Favorites.css";
+import { Nav } from "../navbar/Nav";
 
 const Favorites = ({ isFav, setIsFav, setActualizado }) => {
-  const { characterFavorites } = selectCharactersFavorites(state => state?.characters);
-  const genders =  Array.from(new Set(characterFavorites.map(char => char.gender)))
-  const [ gender, setGender ] = useState("");
-  const match = gender ? characterFavorites.filter(char => {
-    if (char.gender !== gender) return false
+  const { characterFavorites } = selectCharactersFavorites(
+    (state) => state?.characters
+  );
+  const genders = Array.from(
+    new Set(characterFavorites.map((char) => char.gender))
+  );
+  const [gender, setGender] = useState("");
+  const match = gender
+    ? characterFavorites.filter((char) => {
+        if (char.gender !== gender) return false;
 
-    return true;
-  }) : characterFavorites;
-  
-    return (
-      <>
-        <Nav/>
-        <h1 className='text-central'>Mis favoritos</h1>
-        <select value={gender} onChange={(e) => setGender(e.target.value)}>
-          <option value="">Todos</option>
-          {
-            genders.map(gender => 
-              (
-                <option key={gender} value={gender}>{gender}</option>
-              )
-            )
-          }
-        </select>
-      <div className='conteinerFavorites'>
+        return true;
+      })
+    : characterFavorites;
+
+  return (
+    <>
+      <Nav />
+      <h1 className="text-central">Mis favoritos</h1>
+      <select value={gender} onChange={(e) => setGender(e.target.value)}>
+        <option value="">Todos</option>
+        {genders.map((gender) => (
+          <option key={gender} value={gender}>
+            {gender}
+          </option>
+        ))}
+      </select>
+      <div className="conteinerFavorites">
         <div className="conteinerCard">
-        { 
-          match.map(({ id, name, species, gender, image }) => {
-                    return (
-                        <Card  
-                        isFav={isFav} 
-                        setIsFav={setIsFav} 
-                        setActualizado={setActualizado}
-                        key={id}
-                        id={id}
-                        name={name} species={species} gender={gender}
-                        image={image}
-                        />
-        )})}
+          {match.map(({ id, name, species, gender, image }) => {
+            return (
+              <Card
+                isFav={isFav}
+                setIsFav={setIsFav}
+                setActualizado={setActualizado}
+                key={id}
+                id={id}
+                name={name}
+                species={species}
+                gender={gender}
+                image={image}
+              />
+            );
+          })}
         </div>
-    </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Favorites
+export default Favorites;
 
 // import { useSelector } from 'react-redux'
 // import Card from '../card/Card'
